@@ -1,4 +1,5 @@
 +<?php
+
 $link = mysqli_connect("127.0.0.1", "root", "Haegtessa", "road_signs");  //connect check - okay
 
 if (!$link) {
