@@ -26,5 +26,16 @@
         }
     else echo mysqli_error($link)
 
-   
+   //здесь нужно закрывать коннект к бд? алсо код можно неплохо оптимизировать, но это все потом. главное что работает
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        
+    </body>
+</html>
