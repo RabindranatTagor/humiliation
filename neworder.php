@@ -162,5 +162,5 @@
           </div>
         <!-- /page content -->
 <?php
-include $root.'footer.php';
+include $root.'/footer.php';
 ?>
