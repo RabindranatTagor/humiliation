@@ -26,7 +26,7 @@
 	<!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- bootstrap-wysiwyg -->
-    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" rel="stylesheet">
     <!-- Select2 -->
     <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
     <!-- Switchery -->
