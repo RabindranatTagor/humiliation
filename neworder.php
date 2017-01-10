@@ -81,19 +81,19 @@
                       <div id="step-2">
                       <form name="sel-customer" class="form-horizontal form-label-left">                        
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Existing Customer</label>
+                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Select customer:</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1">
+                          <select class="form-control">
                             <option></option>
-                              <?php foreach($rows as $row){?>
-                            <option value=<?php $row[0]?>><?php echo $row[1]?></option>
-                              <?php }?>
+                          <?php foreach($rows as $row){?>
+                          <option value=<?php $row[0]?>><?php echo $row[1]?></option>
+                           <?php }?>
                           </select>
                         </div>
                       </div>
                       </form>
                       <div class="ln_solid"></div>
-                        <form name = "new-customer" class="form-horizontal form-label-left" action="customer_processing.php" method="post">
+                        <form name = "new-customer" class="form-horizontal form-label-left" action="customer_processing.php" method="post" target="_blank">
                             <h2>Or add a new one:</h2>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Customer name<span class="required">*</span>
@@ -162,5 +162,5 @@
           </div>
         <!-- /page content -->
 <?php
-include $root.'footer.php';
+include $root.'/footer.php';
 ?>

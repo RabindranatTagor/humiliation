@@ -11,6 +11,7 @@
                       UNION ALL
                       SELECT zakaz.name, zakaz_contents.quantity*road_signs_catalog.price as stoimost from zakaz, zakaz_contents, road_signs_catalog where zakaz.idzakaz=zakaz_contents.idzakaza and zakaz_contents.id_road_signs = road_signs_catalog.idroad_signs_catalog and zakaz.name='$zakaz_name';"; // запрос высчитывает общую стоимость каждой позиции в заказе
             $result = mysqli_query($link, $query);
+            echo mysqli_error($link);
             while ($row = mysqli_fetch_row($result)) {
                 $totalcost+=$row[1];
             }

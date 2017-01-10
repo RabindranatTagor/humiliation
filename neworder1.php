@@ -18,7 +18,7 @@
                       <div class="form-group">
                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Select customer:</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control" name="order-info">
+                          <select class="form-control" name="cust-info">
                             <option></option>
                           <?php foreach($rows as $row){?>
                           <option value=<?php $row[0]?>><?php echo $row[1]?></option>
@@ -33,14 +33,14 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Enter name: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="last-name"  placeholder="e.g. Т-1-16" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="last-name" name="ord-name"  placeholder="e.g. Т-1-16" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Enter date <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12 name="ord-date" required="required" type="text">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
