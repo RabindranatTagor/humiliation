@@ -9,6 +9,5 @@ if (!$link) {
     exit;
 }
 
-echo "Соединение с MySQL установлено!" . '<br>';
-echo "Информация о сервере: " . mysqli_get_host_info($link) . '<br>';
+$root = $_SERVER["DOCUMENT_ROOT"];
 ?>

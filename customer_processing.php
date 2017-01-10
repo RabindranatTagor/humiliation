@@ -1,14 +1,14 @@
 <?php
     require 'init.php';
 
-    $name = $_POST['custname']; 
+    $ckey = $_POST['custname']; 
     $inn = $_POST['custinn'];
     $kpp = $_POST['custkpp'];
 
     $query = "INSERT INTO customers (name, INN, KPP) VALUES ('$name', '$inn', '$kpp')";
     $result = mysqli_query($link, $query);
 
-    $redirect = isset($_SERVER['HTTP_REFERER'])? $_SERVER['HTTP_REFERER']:'neworder.php'; 
+    $redirect = isset($_SERVER['HTTP_REFERER'])? 'neworder1.php':'neworder1.php'; 
     header("Location: $redirect"); 
     exit();
 ?>

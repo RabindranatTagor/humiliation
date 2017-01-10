@@ -51,9 +51,8 @@
     <!-- jQuery Smart Wizard -->
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-	
+    <!--скрипт был два раза подключен-->
+
 	    <!-- Datatables -->
     <script>
       $(document).ready(function() {
