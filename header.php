@@ -73,6 +73,7 @@
                       <li><a href="neworder.php">Register a new order</a></li>
                       <li><a href="#">Renew materials</a></li>
                       <li><a href="index.php">Main page</a></li>
+                      <li><a href="neworder1.php">Register a new order CURR</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
