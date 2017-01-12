@@ -40,7 +40,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Enter date <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12 name="ord-date" required="required" type="text">
+                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" name="ord-date" required="required" type="text">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
@@ -52,6 +52,39 @@
                       </div>
 
                     </form>
+
+					  <!-- Datatable Intended -->
+					 <table id="datatable" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>№</th>
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Sum</th>
+                          <th>Remove</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Enter existing position from tables: materials.name OR road_signs_catalog.name OR add brand new position</td>
+                          <td>Here goes materials.price OR road_signs.catalog.price depending on Name choice</td>
+                          <td>Enter it manually</td>
+                          <td>= Price*Quantity</td>
+                          <td>Checkbox?</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>SQUARE BLUE SIGN</td>
+                          <td>1000</td>
+                          <td>10</td>
+                          <td>10 0000</td>
+                          <td>Checkbox?</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
 <?php
 include $root.'/footer.php';
