@@ -4,13 +4,14 @@
     include $root.'/header.php';
 
     $query = "SELECT id, name FROM customers ORDER BY id";
+
     $result = mysqli_query($link, $query);
     
     while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) { 
          $rows[] = $row;
          }
-    mysqli_free_result($result);
 
+    mysqli_free_result($result);
     mysqli_close($link);
 ?>
 
@@ -20,8 +21,8 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select class="form-control" name="cust-info">
                             <option></option>
-                          <?php foreach($rows as $row){?>
-                          <option value=<?php $row[0]?>><?php echo $row[1]?></option>
+                         <?php foreach($rows as $row){?>
+                          <option value=<?php echo $row[0]?>><?php echo $row[1] ?></option>
                            <?php }?>
                           </select>
                         </div>
@@ -53,38 +54,6 @@
 
                     </form>
 
-					  <!-- Datatable Intended -->
-					 <table id="datatable" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>№</th>
-                          <th>Name</th>
-                          <th>Price</th>
-                          <th>Quantity</th>
-                          <th>Sum</th>
-                          <th>Remove</th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Enter existing position from tables: materials.name OR road_signs_catalog.name OR add brand new position</td>
-                          <td>Here goes materials.price OR road_signs.catalog.price depending on Name choice</td>
-                          <td>Enter it manually</td>
-                          <td>= Price*Quantity</td>
-                          <td>Checkbox?</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>SQUARE BLUE SIGN</td>
-                          <td>1000</td>
-                          <td>10</td>
-                          <td>10 0000</td>
-                          <td>Checkbox?</td>
-                        </tr>
-                      </tbody>
-                    </table>
 
 <?php
 include $root.'/footer.php';
