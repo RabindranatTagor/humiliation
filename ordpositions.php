@@ -19,13 +19,14 @@
     */
     $query = "SELECT name FROM customers WHERE id = '$cfk'";
     $result = mysqli_query($link, $query);
-    $cname = $result;
+    $cname = mysqli_fetch_assoc($result);
+    //print_r($cname);
     mysqli_free_result($result);
     mysqli_close($link);
 ?>
 
 					  <!-- Datatable Intended -->
-                        Customer:<?php echo $cname?>
+                        Customer:<?php echo $cname['name']?> <!--assumed string while is actulally array-->
                         Name: <?php echo $oname?>
                         Date: <?php echo $odate?>
 					 <table id="datatable" class="table table-striped table-bordered">
