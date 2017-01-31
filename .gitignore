@@ -1,3 +1,6 @@
 init.php
 Web.config
 assets/
+build/
+vendors/
+images/
