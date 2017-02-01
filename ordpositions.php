@@ -7,20 +7,19 @@
     $oname = $_POST['ord-name'];
     $odate = $_POST['ord-date'];
     $firsum = 0;
-/*
     $query = "INSERT INTO zakaz (name, date, customer, sum) VALUES ('$oname', '$odate', '$cfk', '$firsum')"; //uniqueness check of name needed!!!!!
     $result = mysqli_query($link, $query);
     mysqli_free_result($result);
 
     $query = "SELECT id FROM zakaz WHERE name = '$oname'";
     $result = mysqli_query($link, $query);
-    $pfk = $result;
+    $pfk = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
-    */
+
     $query = "SELECT name FROM customers WHERE id = '$cfk'";
     $result = mysqli_query($link, $query);
     $cname = mysqli_fetch_assoc($result);
-    //print_r($cname);
+
     mysqli_free_result($result);
     mysqli_close($link);
 ?>
@@ -60,6 +59,11 @@
                         </tr>
                       </tbody>
                     </table>
+
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                       <a href="newpos.php"><button type="button" class="btn btn-success btn-sm">Add new</button></a>
+                     </div>
+ADD NEW BUTTON HERE -> goes to a new form, returns after to this page            SUMBIT BUTTON HERE ->goes to a pdf
 
 
 <?php
