@@ -28,7 +28,7 @@
                       <div class="form-group">
                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Select name:</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control" name="pos-name">
+                          <select class="form-control" name="pos-name" id="posiziya">
                             <option></option>
                          <?php foreach($signs as $sign){?>
                           <option value=<?php echo $sign[0]?> data-type="road_signs_catalog"><?php echo $sign[1] ?></option>

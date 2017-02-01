@@ -1,6 +1,7 @@
 <?php
     require 'init.php';
 
+<<<<<<< HEAD
     if ($_REQUEST['pos-name']) {
         $pname = $_REQUEST['pos-name'];
         $tname = $_REQUEST['type'];
@@ -18,5 +19,3 @@
     }
 
 ?>
-
-<!--html не нужен-->
