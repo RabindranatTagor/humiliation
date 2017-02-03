@@ -46,21 +46,21 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Price: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="pos-price"  placeholder="here goes price" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="price" name="pos-price"  placeholder="here goes price" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Quantity: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="pos-quantity"  placeholder="numbers only" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="qnty" name="pos-quantity"  placeholder="numbers only" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Sum: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="pos-sum"  placeholder="=Qnty*price" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="sum" name="pos-sum"  placeholder="=Qnty*price" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 

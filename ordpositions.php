@@ -8,19 +8,27 @@
     $odate = $_POST['ord-date'];
     $firsum = 0;
     $query = "INSERT INTO zakaz (name, date, customer, sum) VALUES ('$oname', '$odate', '$cfk', '$firsum')"; //uniqueness check of name needed!!!!!
-    $result = mysqli_query($link, $query);
-    mysqli_free_result($result);
+     if(!($result = mysqli_query($link, $query))){
+         echo '<br>MySQLi error: '.mysqli_error($link);     
+         } else mysqli_free_result($result);
 
     $query = "SELECT id FROM zakaz WHERE name = '$oname'";
-    $result = mysqli_query($link, $query);
-    $pfk = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
+      if(!($result = mysqli_query($link, $query))){
+          echo '<br>MySQLi error: '.mysqli_error($link);
+          } else {
+        $pfk = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+     }   
+    
 
     $query = "SELECT name FROM customers WHERE id = '$cfk'";
-    $result = mysqli_query($link, $query);
-    $cname = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
-    mysqli_close($link);
+      if(!($result = mysqli_query($link, $query))){
+          echo '<br>MySQLi error: '.mysqli_error($link);    
+      } else {
+        $cname = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        mysqli_close($link);        
+      }
 ?>
 
 					  <!-- Datatable Intended -->
