@@ -11,7 +11,7 @@
     $query = "INSERT INTO zakaz (name, date, customer, sum) VALUES ('$oname', '$odate', '$cfk', '$firsum')"; //uniqueness check of name needed!!!!!
      if(!($result = mysqli_query($link, $query))){
          echo '<br>MySQLi error: '.mysqli_error($link);     
-         } else mysqli_free_result($result);
+    } else mysqli_free_result($result);
 
     $query = "SELECT id FROM zakaz WHERE name = '$oname'";
       if(!($result = mysqli_query($link, $query))){
