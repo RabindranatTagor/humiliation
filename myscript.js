@@ -8,9 +8,14 @@ $('#posiziya').change(function(e){
     }) 
 });
 
-$('#qnty').change(function(s){
+$('#qnty').change(function (s) {
     $quant = $(this).val();
-    $.post('api.php', 'pos-quantity':$quant).then(function(res){
+    $price = $('#price').val();
+    $payload = new Object;
+    $payload["pos-quantity"] = $quant;
+    $payload["price"] = $price;
+    $.post('api.php', $payload).then(function (res) { //got to send price back to api; lame but will do
+        console.log(res);
         $('#sum').val(res);
     })
 });
