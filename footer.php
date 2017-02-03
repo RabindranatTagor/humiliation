@@ -463,5 +463,6 @@
       });
     </script>
     <!-- /Starrr -->
+    <script src="./myscript.js"></script>
   </body>
 </html>
