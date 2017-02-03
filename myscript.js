@@ -19,3 +19,18 @@ $('#qnty').change(function (s) {
         $('#sum').val(res);
     })
 });
+
+$(document).ready(function () {
+    $('#subm').click(function () {
+        $name = $('#posiziya').val(); //gets id not name
+        $type = $('#posiziya').find('option:selected').data('type');
+        $quant = $('#qnty').val();
+        $summ = $('#sum').val();
+        $record = new Object;
+        $record['pos-name1'] = $name;
+        $record['pos-type'] = $type;
+        $record['pos-quant'] = $quant;
+        $record['pos-sum'] = $summ;
+        $.post('api.php', $record);
+    })
+});

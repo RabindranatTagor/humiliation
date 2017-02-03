@@ -12,31 +12,42 @@
      if(!($result = mysqli_query($link, $query))){
          echo '<br>MySQLi error: '.mysqli_error($link);     
     } else mysqli_free_result($result);
-
-    $query = "SELECT id FROM zakaz WHERE name = '$oname'";
-      if(!($result = mysqli_query($link, $query))){
-          echo '<br>MySQLi error: '.mysqli_error($link);
-          } else {
-        $pfk = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-     }   
-    
+    $query = "SELECT idzakaz FROM zakaz WHERE name = '$oname'";
+          if(!($result = mysqli_query($link, $query))){
+          echo '<br>MySQLi error: '.mysqli_error($link);    
+      } else {
+        $zakid = mysqli_fetch_assoc($result);
+        mysqli_free_result($result); 
+      }
 
     $query = "SELECT name FROM customers WHERE id = '$cfk'";
       if(!($result = mysqli_query($link, $query))){
           echo '<br>MySQLi error: '.mysqli_error($link);    
       } else {
         $cname = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-        mysqli_close($link);        
+        mysqli_free_result($result); 
       }
-
+      /*
+    $query = "SELECT materials.name, materials.price, zakaz_contents.quantity, materials.price*zakaz_contents.quantity as stoimost FROM road_signs.zakaz_contents, road_signs.materials  WHERE idzakaza = '$zakid['idzakaz']' AND zakaz_contents.id_materials = materials.idmaterials
+                UNION ALL
+               SELECT road_signs_catalog.name, road_signs_catalog.price, zakaz_contents.quantity, road_signs_catalog.price*zakaz_contents.quantity as stoimost FROM road_signs.zakaz_contents, road_signs.road_signs_catalog  WHERE idzakaza = '$zakid['idzakaz']' AND zakaz_contents.id_road_signs = road_signs_catalog.idroad_signs_catalog;"
+     if(!($result = mysqli_query($link, $query))){
+          echo '<br>MySQLi error: '.mysqli_error($link);    
+      } else {
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) { 
+         $rows[] = $row;
+         } 
+         mysqli_free_result($result); 
+         mysqli_close($link);
+      }*/
+      $i = 0;
+ 
 ?>
 
 					  <!-- Datatable Intended -->
-                        Customer:<?php echo $cname['name']?> <!--assumed string while is actulally array-->
-                        Name: <?php echo $oname?>
-                        Date: <?php echo $odate?>
+                        <h2>Customer:<?php echo $cname['name']?></h2> <!--assumed string while is actulally array-->
+                        <h2>Name: <?php echo $oname?></h2>
+                        <h2>Date: <?php echo $odate?></h2>
 					 <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -50,22 +61,7 @@
                       </thead>
 
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Enter existing position from tables: materials.name OR road_signs_catalog.name OR add brand new position</td>
-                          <td>Here goes materials.price OR road_signs.catalog.price depending on Name choice</td>
-                          <td>Enter it manually</td>
-                          <td>= Price*Quantity</td>
-                          <td>Checkbox?</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>SQUARE BLUE SIGN</td>
-                          <td>1000</td>
-                          <td>10</td>
-                          <td>10 0000</td>
-                          <td>Checkbox?</td>
-                        </tr>
+
                       </tbody>
                     </table>
 

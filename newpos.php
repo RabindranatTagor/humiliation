@@ -68,7 +68,7 @@
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button type="submit" class="btn btn-primary">Cancel</button>
-                          <button type="submit" class="btn btn-success">Submit</button> <!--add into zakaz_content and return to ordpositions.php-->
+                          <button type="submit" id="subm" class="btn btn-success">Submit</button> <!--add into zakaz_content and return to ordpositions.php-->
                         </div>
                       </div>
 
