@@ -39,12 +39,14 @@
         $zid = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
 
-        $query = "UPDATE zakaz SET sum += $sum WHERE idzakaz = $zid['id]";
+
+        $zidid = $zid['id'];
+        $query = "UPDATE zakaz SET sum += $sum WHERE idzakaz = $zidid";
         $result = mysqli_query($link, $query);
         mysqli_free_result($result);
 
         if($tname==='materials'){
-            $query = "INSERT INTO zakaz_contents (idzakaza, id_materials, quantity) VALUES ($zid['id'], $pname, $qnty";
+            $query = "INSERT INTO zakaz_contents (idzakaza, id_materials, quantity) VALUES ($zidid, $pname, $qnty";
             $result = mysqli_query($link, $query);
 
             $redirect = isset($_SERVER['HTTP_REFERER'])? 'ordpositions.php':'ordpositions.php'; 
@@ -52,15 +54,12 @@
             exit();
 
         } elseif($tname === 'road_signs_catalog'){
-            $query = "INSERT INTO zakaz_contents (idzakaza, id_road_signs, quantity) VALUES ($zid['id'], $pname, $qnty";
+            $query = "INSERT INTO zakaz_contents (idzakaza, id_road_signs, quantity) VALUES ($zidid, $pname, $qnty";
             $result = mysqli_query($link, $query);
 
             $redirect = isset($_SERVER['HTTP_REFERER'])? 'ordpositions.php':'ordpositions.php'; 
             header("Location: $redirect"); 
             exit();
         }
-                          
-         }                
-        }
-    }
+    }              
 ?>
