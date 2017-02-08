@@ -4,163 +4,113 @@
     include $root.'/header.php';
 
     $query = "SELECT id, name FROM customers ORDER BY id";
+
     $result = mysqli_query($link, $query);
     
     while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) { 
          $rows[] = $row;
          }
+
     mysqli_free_result($result);
 
+        $query = "SELECT idroad_signs_catalog, name, price FROM road_signs_catalog ORDER BY idroad_signs_catalog";
+
+    $result = mysqli_query($link, $query);
+    
+    while ($sign = mysqli_fetch_array($result, MYSQLI_NUM)) { 
+         $signs[] = $sign;
+         }
+
+    mysqli_free_result($result);
+
+    $query = "SELECT idmaterials, name, price FROM materials ORDER BY idmaterials";
+
+    $result = mysqli_query($link, $query);
+    
+    while ($mat = mysqli_fetch_array($result, MYSQLI_NUM)) { 
+         $mats[] = $mat;
+         }
+    mysqli_free_result($result);
     mysqli_close($link);
+
 ?>
 
-
-                    <!-- Smart Wizard -->
-                    <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
-                    <div id="wizard" class="form_wizard wizard_horizontal">
-                      <ul class="wizard_steps">
-                        <li>
-                          <a href="#step-1">
-                            <span class="step_no">1</span>
-                            <span class="step_descr">
-                                              Step 1<br />
-                                              <small>Enter name and date of the order</small>
-                                          </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-2">
-                            <span class="step_no">2</span>
-                            <span class="step_descr">
-                                              Step 2<br />
-                                              <small>Choose or add new customer</small>
-                                          </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-3">
-                            <span class="step_no">3</span>
-                            <span class="step_descr">
-                                              Step 3<br />
-                                              <small>Choose or add new position</small>
-                                          </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-4">
-                            <span class="step_no">4</span>
-                            <span class="step_descr">
-                                              Step 4<br />
-                                              <small>See result</small>
-                                          </span>
-                          </a>
-                        </li>
-                      </ul>
-                        <!--Enter order name and date-->
-                      <div id="step-1">
-                        <form name="order-info" class="form-horizontal form-label-left">
-
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Order name <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="ordname" placeholder="E.g. T-1-16" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Order date <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="orddate" class="date-picker form-control col-md-7 col-xs-12" placeholder="YYYY-MM-DD" id="birthday" name="last-name" required="required">
-                            </div>
-                          </div>
-                        </form>
-
-                      </div>
-                        <!--Add or choose a customer-->
-                      <div id="step-2">
-                      <form name="sel-customer" class="form-horizontal form-label-left">                        
+                    <form id="demo-form2" name="order-info" data-parsley-validate class="form-horizontal form-label-left" action="ordpositions.php" method="post">
                       <div class="form-group">
                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Select customer:</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control">
+                          <select class="form-control" name="cust-info">
                             <option></option>
-                          <?php foreach($rows as $row){?>
-                          <option value=<?php $row[0]?>><?php echo $row[1]?></option>
+                         <?php foreach($rows as $row){?>
+                          <option value=<?php echo $row[0]?>><?php echo $row[1] ?></option>
                            <?php }?>
                           </select>
                         </div>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                          <a href="newcustomer.php"><button type="button" class="btn btn-success btn-sm">Add new</button></a>
+                        </div>
                       </div>
-                      </form>
-                      <div class="ln_solid"></div>
-                        <form name = "new-customer" class="form-horizontal form-label-left" action="customer_processing.php" method="post" target="_blank">
-                            <h2>Or add a new one:</h2>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Customer name<span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="custname" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">INN:<span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text"  class="form-control col-md-7 col-xs-12" required pattern="^[ 0-9]+$" id="last-name" name="custinn" required="required">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">KPP (9 digits):
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" class="form-control col-md-7 col-xs-12" required pattern="[0-9]{9}" id="last-name" name="custkpp">
-                            </div>
-                          </div>
                       <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
-                          <button type="reset" class="btn btn-primary">Cancel</button>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Enter name: <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="last-name" name="ord-name"  placeholder="e.g. Т-1-16" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Enter date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" name="ord-date" required="required" type="text">
+                        </div>
+                      </div>
+                        <!-- Datatable Intended -->
+					 <table id="datatable" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Sum</th>
+                          <th>Remove</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                          <?php for($i=0; $i <50; $i++){ ?>
+                        <tr>
+                          <td><select class="form-control" name="pos-name" id="posiziya">
+                            <option></option>
+                         <?php foreach($signs as $sign){?>
+                          <option value=<?php echo $sign[0]?> data-type="road_signs_catalog"><?php echo $sign[1] ?></option>
+                           <?php }?>
+                         <?php foreach($mats as $mat){?>
+                          <option value=<?php echo $mat[0]?> data-type="materials"><?php echo $mat[1] ?></option>
+                           <?php }?>
+                          </select>
+                            <a href="newtovar.php"><button type="button" class="btn btn-success btn-sm">Add new</button></a> <!--add new (later!)-->
+                          </td>
+                          <td>
+                          <input type="text" id="price" name="pos-price"  placeholder="here goes price" required="required" class="form-control col-md-7 col-xs-12">
+                          </td>
+                          <td><input type="text" id="qnty" name="pos-quantity"  placeholder="numbers only" required="required" class="form-control col-md-7 col-xs-12"></td>
+                          <td><input type="text" id="sum" name="pos-sum"  placeholder="=Qnty*price" required="required" class="form-control col-md-7 col-xs-12"></td>
+                          <td>Checkbox?</td>
+                        </tr>
+                         <?php }?>
+                      </tbody>
+                    </table>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
                           <button type="submit" class="btn btn-success">Submit</button>
                         </div>
-                      </div>                          
-                        </form>   
-                          
-                                 
-                      </div>
-                        <!--Enter positions-->
-                      <div id="step-3">
-                        <h2 class="StepTitle">Step 3 Content</h2>
-                        <p>
-                          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                      </div>
-                      <div id="step-4">
-                        <h2 class="StepTitle">Step 4 Content</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
                       </div>
 
-                    </div>
-                    <!-- End SmartWizard Content -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <!-- /page content -->
+                    </form>
+
+
 <?php
 include $root.'/footer.php';
 ?>
