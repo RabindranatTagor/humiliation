@@ -3,45 +3,47 @@
 
     include $root.'/header.php';
 
-    $cfk = $_POST['cust-info']; 
+    print_r($_POST);
+
+    $cfk = $_POST['cust-info'];
     $oname = $_POST['ord-name'];
     $odate = $_POST['ord-date'];
     $firsum = 0;
 
     $query = "INSERT INTO zakaz (name, date, customer, sum) VALUES ('$oname', '$odate', '$cfk', '$firsum')"; //uniqueness check of name needed!!!!!
      if(!($result = mysqli_query($link, $query))){
-         echo '<br>MySQLi error: '.mysqli_error($link);     
+         echo '<br>MySQLi error: '.mysqli_error($link);
     } else mysqli_free_result($result);
-    $query = "SELECT idzakaz FROM zakaz WHERE name = '$oname'";
+    $query = "SELECT id FROM zakaz WHERE name = '$oname'";
           if(!($result = mysqli_query($link, $query))){
-          echo '<br>MySQLi error: '.mysqli_error($link);    
+          echo '<br>MySQLi error: '.mysqli_error($link);
       } else {
         $zakid = mysqli_fetch_assoc($result);
-        mysqli_free_result($result); 
+        mysqli_free_result($result);
       }
 
     $query = "SELECT name FROM customers WHERE id = '$cfk'";
       if(!($result = mysqli_query($link, $query))){
-          echo '<br>MySQLi error: '.mysqli_error($link);    
+          echo '<br>MySQLi error: '.mysqli_error($link);
       } else {
         $cname = mysqli_fetch_assoc($result);
-        mysqli_free_result($result); 
+        mysqli_free_result($result);
       }
       /*
     $query = "SELECT materials.name, materials.price, zakaz_contents.quantity, materials.price*zakaz_contents.quantity as stoimost FROM road_signs.zakaz_contents, road_signs.materials  WHERE idzakaza = '$zakid['idzakaz']' AND zakaz_contents.id_materials = materials.idmaterials
                 UNION ALL
                SELECT road_signs_catalog.name, road_signs_catalog.price, zakaz_contents.quantity, road_signs_catalog.price*zakaz_contents.quantity as stoimost FROM road_signs.zakaz_contents, road_signs.road_signs_catalog  WHERE idzakaza = '$zakid['idzakaz']' AND zakaz_contents.id_road_signs = road_signs_catalog.idroad_signs_catalog;"
      if(!($result = mysqli_query($link, $query))){
-          echo '<br>MySQLi error: '.mysqli_error($link);    
+          echo '<br>MySQLi error: '.mysqli_error($link);
       } else {
-         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) { 
+         while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
          $rows[] = $row;
-         } 
-         mysqli_free_result($result); 
+         }
+         mysqli_free_result($result);
          mysqli_close($link);
       }*/
       $i = 0;
- 
+
 ?>
 
 					  <!-- Datatable Intended -->
