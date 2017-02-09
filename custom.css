@@ -1,0 +1,9 @@
+button.remove {
+    color: #f10505;
+    background: none;
+    border: none;
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}

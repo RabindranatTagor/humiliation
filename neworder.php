@@ -6,8 +6,8 @@
     $query = "SELECT id, name FROM customers ORDER BY id";
 
     $result = mysqli_query($link, $query);
-    
-    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) { 
+
+    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
          $rows[] = $row;
          }
 
@@ -16,8 +16,8 @@
         $query = "SELECT idroad_signs_catalog, name, price FROM road_signs_catalog ORDER BY idroad_signs_catalog";
 
     $result = mysqli_query($link, $query);
-    
-    while ($sign = mysqli_fetch_array($result, MYSQLI_NUM)) { 
+
+    while ($sign = mysqli_fetch_array($result, MYSQLI_NUM)) {
          $signs[] = $sign;
          }
 
@@ -26,8 +26,8 @@
     $query = "SELECT idmaterials, name, price FROM materials ORDER BY idmaterials";
 
     $result = mysqli_query($link, $query);
-    
-    while ($mat = mysqli_fetch_array($result, MYSQLI_NUM)) { 
+
+    while ($mat = mysqli_fetch_array($result, MYSQLI_NUM)) {
          $mats[] = $mat;
          }
     mysqli_free_result($result);
@@ -77,29 +77,33 @@
                       </thead>
 
                       <tbody>
-                          <?php for($i=0; $i <50; $i++){ ?>
                         <tr>
-                          <td><select class="form-control" name="pos-name" id="posiziya">
-                            <option></option>
-                         <?php foreach($signs as $sign){?>
-                          <option value=<?php echo $sign[0]?> data-type="road_signs_catalog"><?php echo $sign[1] ?></option>
-                           <?php }?>
-                         <?php foreach($mats as $mat){?>
-                          <option value=<?php echo $mat[0]?> data-type="materials"><?php echo $mat[1] ?></option>
-                           <?php }?>
-                          </select>
+                          <td>
+                            <select class="form-control input-pos" name="pos-name[]"> <!-- square baracket magick for arrays in post request -->
+                              <option></option>
+                              <?php foreach($signs as $sign){?>
+                                <option value=<?php echo $sign[0]?> data-type="road_signs_catalog"><?php echo $sign[1] ?></option>
+                              <?php }?>
+                              <?php foreach($mats as $mat){?>
+                                <option value=<?php echo $mat[0]?> data-type="materials"><?php echo $mat[1] ?></option>
+                              <?php }?>
+                            </select>
                             <a href="newtovar.php"><button type="button" class="btn btn-success btn-sm">Add new</button></a> <!--add new (later!)-->
                           </td>
                           <td>
-                          <input type="text" id="price" name="pos-price"  placeholder="here goes price" required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="text" name="pos-price[]" placeholder="here goes price" required="required" class="input-price form-control col-md-7 col-xs-12" readonly="true">
                           </td>
-                          <td><input type="text" id="qnty" name="pos-quantity"  placeholder="numbers only" required="required" class="form-control col-md-7 col-xs-12"></td>
-                          <td><input type="text" id="sum" name="pos-sum"  placeholder="=Qnty*price" required="required" class="form-control col-md-7 col-xs-12"></td>
-                          <td>Checkbox?</td>
+                          <td>
+                            <input type="number" name="pos-quantity[]"  placeholder="numbers only" required="required" class="input-qnty form-control col-md-7 col-xs-12">
+                          </td>
+                          <td>
+                            <input type="text" name="pos-sum[]"  placeholder="=Qnty*price" required="required" class="input-sum form-control col-md-7 col-xs-12" readonly="true">
+                          </td>
+                          <td><button class="remove">&times;</button></td>
                         </tr>
-                         <?php }?>
                       </tbody>
                     </table>
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
