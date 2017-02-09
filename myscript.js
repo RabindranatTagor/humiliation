@@ -1,9 +1,10 @@
 $('#ordername').change(function (e) {
-    $order = $(this).text();
-    console.log($order);
+    $order = $(this).val();
+    //console.log($order);
     $.post('api.php', { 'ordname': $order }).then(function (data) {
-       alert(data);
-   });
+        //console.log(data);
+        alert(data);
+    });
 });
 
 posHandle = function(el){

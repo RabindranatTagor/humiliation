@@ -9,10 +9,10 @@
         if(!($result = mysqli_query($link, $query))){
            echo '<br>MySQLi error: '.mysqli_error($link);    
           } else {
-            if(mysql_num_rows( $result ) > 0){
-                echo "NO";
-            }
-            else echo "YES";
+              $n = mysqli_num_rows($result);
+              if($n >0){
+                  echo "'$order' already exists. Please change the name.";
+              } else echo "OK";
             mysqli_free_result($result);
             mysqli_close($link);      
          }                
