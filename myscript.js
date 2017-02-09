@@ -1,3 +1,11 @@
+$('#ordername').change(function (e) {
+    $order = $(this).text();
+    console.log($order);
+    $.post('api.php', { 'ordname': $order }).then(function (data) {
+       alert(data);
+   });
+});
+
 posHandle = function(el){
     $name = $(el).find('option:selected').text();
     $type = $(el).find('option:selected').data('type');

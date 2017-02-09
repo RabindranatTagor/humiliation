@@ -2,6 +2,21 @@
     require 'init.php';
 
     ini_set('html_errors',0);
+    //check uniqueness
+    if(isset($_REQUEST['ordname'])){
+        $order = $_REQUEST['ordname'];
+        $query = "SELECT * FROM zakaz WHERE name = '$order'";
+        if(!($result = mysqli_query($link, $query))){
+           echo '<br>MySQLi error: '.mysqli_error($link);    
+          } else {
+            if(mysql_num_rows( $result ) > 0){
+                echo "NO";
+            }
+            else echo "YES";
+            mysqli_free_result($result);
+            mysqli_close($link);      
+         }                
+    }
 
    //return price
    if ( isset($_REQUEST['pos-name'])) {
