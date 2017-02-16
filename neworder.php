@@ -64,6 +64,13 @@
                           <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" name="ord-date" required="required" type="text">
                         </div>
                       </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Total sum: <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="sumtotal" name="sum-tot" required="required" class="form-control col-md-7 col-xs-12" readonly="true" value="0">
+                        </div>
+                      </div>
                         <!-- Datatable Intended -->
 					 <table id="datatable" class="table table-striped table-bordered">
                       <thead>

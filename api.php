@@ -17,7 +17,26 @@
             mysqli_close($link);      
          }                
     }
-
+    /*
+    //check qnty
+    if ( isset($_REQUEST['pos-name1'])) {
+       $pname = $_REQUEST['pos-name1'];
+       $quantity = $_REQUEST['pos-quant'];
+       $query = "SELECT quantity FROM materials WHERE name = '$pname'";
+       
+       if(!($result = mysqli_query($link, $query))){
+           echo '<br>MySQLi error: '.mysqli_error($link);    
+          } else {
+            $qnty = mysqli_fetch_assoc($result);
+            mysqli_free_result($result);
+            mysqli_close($link);
+            $q = $qnty['quantity'];
+            if ($q < 10 || $q < $quantity){
+                echo "Осталось всего $q материалов этого вида";
+            }        
+         }                
+    }
+    */
    //return price
    if ( isset($_REQUEST['pos-name'])) {
        $pname = $_REQUEST['pos-name'];
