@@ -35,10 +35,11 @@ qtHandle = function (el) { //el = short of element
     $quant = $this.val();
     $row = $this.parents('tr');
     $price = $row.find('.input-price').val();
-    $row.find('.input-sum').val($quant * $price);
+    $curr = parseInt($quant * $price); //parese a number from a string
+    $row.find('.input-sum').val($curr);
 
-    $curr = $row.find('.input-sum').val($quant * $price); //expected dynamically calculated total sum of the order
-    $tot = $('#sumtotal').val();
+     //this one doesn't return a numercial value $curr = $row.find('.input-sum').val($quant * $price);
+    $tot = parseInt($('#sumtotal').val());
     $res = $curr + $tot;
     $('#sumtotal').val($curr+$tot);
 
@@ -62,6 +63,3 @@ handleStuff = function() {
 }
 
 handleStuff();
-
-
-
