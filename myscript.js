@@ -10,12 +10,13 @@ $('#ordername').change(function (e) {
 
 //materials check supposed to return alert if materials.quantity in db is less than the input quantity or less than 10;
 mCheck = function(el){
-    $name = $(el).find('option:selected').text();
-    $type = $(el).find('option:selected').data('type');
-    $qnty = $(el).parents('tr').find('.pos-quantity').val();
+    $row = $(el).parents('tr'); //wrapping el in $() makes it a jQuery object which is required to use jQuery magic like .parents() or .val()
+    $name = $row.find('option:selected').text();
+    $type = $row.find('option:selected').data('type');
+    $qnty = $(el).val();
     if($type == "materials"){
         $.post('api.php',{'pos-name1':$name, 'pos-quant':$qnty}).then(function(data){
-        $alert(data);
+        alert(data);
     });
     }
 };
@@ -35,7 +36,7 @@ qtHandle = function (el) { //el = short of element
     $quant = $this.val();
     $row = $this.parents('tr');
     $price = $row.find('.input-price').val();
-    $curr = parseInt($quant * $price); //parese a number from a string
+    $curr = parseInt($quant * $price); //parse a number from a string
     $row.find('.input-sum').val($curr);
 
      //this one doesn't return a numercial value $curr = $row.find('.input-sum').val($quant * $price);
@@ -59,6 +60,7 @@ handleStuff = function() {
 
   $('.input-qnty').change(function(event){
     qtHandle(event.target);
+    mCheck(event.target); //binding the function to quantity change event
   });
 }
 
