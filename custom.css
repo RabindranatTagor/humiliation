@@ -7,3 +7,7 @@ button.remove {
     margin: 0;
     width: 100%;
 }
+div.alert{
+    display:none;
+}
+
