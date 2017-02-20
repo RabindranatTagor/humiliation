@@ -21,14 +21,25 @@ mCheck = function(el){
     }
 };
 
+//removal
 
+rmRow = function(el){
+    $this = $(el);
+    $row = $this.parents('tr');
+    $this.click(function () {
+        $row.remove();
+    });
+}
 
-posHandle = function(el){
+posHandle = function (el) {
     $name = $(el).find('option:selected').text();
     $type = $(el).find('option:selected').data('type');
-    $.post('api.php',{'pos-name':$name,'type':$type}).then(function(data){
+    $.post('api.php', { 'pos-name': $name, 'type': $type }).then(function (data) {
         $(el).parents('tr').find('.input-price').val(data);
     });
+
+    $row = $this.parents('tr');
+
 };
 
 qtHandle = function (el) { //el = short of element
@@ -45,6 +56,7 @@ qtHandle = function (el) { //el = short of element
     });
     $('#sumtotal').val($tot);
 
+
     if ($row.is(':last-child')) { //I ♥ jQuery, it's like plain english
         $clone = $row.clone();
         $clone.find('input').val(null);
@@ -54,15 +66,19 @@ qtHandle = function (el) { //el = short of element
     }
 };
 
-handleStuff = function() {
-  $('.input-pos').change(function(event){
-    posHandle(event.target);
-  });
+handleStuff = function () {
+    $('.input-pos').change(function (event) {
+        posHandle(event.target);
+    });
 
-  $('.input-qnty').change(function(event){
-    qtHandle(event.target);
-    mCheck(event.target); //binding the function to quantity change event
-  });
+    $('.input-qnty').change(function (event) {
+        qtHandle(event.target);
+        mCheck(event.target); //binding the function to quantity change event
+    });
+
+    $('.remove').click(function (event) {
+        rmRow(event.target);
+    })
 }
 
 handleStuff();

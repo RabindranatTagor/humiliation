@@ -106,7 +106,7 @@
                           <td>
                             <input type="text" name="pos-sum[]"  placeholder="=Qnty*price" required="required" class="input-sum form-control col-md-7 col-xs-12" readonly="true">
                           </td>
-                          <td><button class="remove">&times;</button></td>
+                          <td><button class="remove" type ="button">&times;</button></td>
                         </tr>
                       </tbody>
                     </table>
