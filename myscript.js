@@ -3,8 +3,11 @@ $('#ordername').change(function (e) {
     //console.log($order);
     $.post('api.php', { 'ordname': $order }).then(function (data) {
         //console.log(data);
-        $('#name-info').text(data);
-        $('#name-alert').fadeIn(300);
+        if(data){
+            $('#name-info').text(data);
+            $('#name-alert').fadeIn(300);
+        }
+
     });
 });
 
@@ -17,8 +20,10 @@ mCheck = function (el) {
     $qnty = $(el).val();
     if ($type == "materials") {
         $.post('api.php', { 'pos-name1': $name, 'pos-quant': $qnty }).then(function (data) {
-            $('#qnty-info').text(data);
-            $('#qnty-alert').fadeIn(300);
+            if(data){
+                $('#qnty-info').text(data);
+                $('#qnty-alert').fadeIn(300);
+            }
         });
     }
 };

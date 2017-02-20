@@ -11,8 +11,9 @@
           } else {
               $n = mysqli_num_rows($result);
               if($n >0){
-                  echo "'$order' already exists. Please change the name.";
-              } else echo "OK";
+                  $message = "$order already exists. Please change the name.";
+                  echo $message;
+              } //else echo "OK";
             mysqli_free_result($result);
             mysqli_close($link);
          }
@@ -32,9 +33,10 @@
             mysqli_close($link);
             $q = $qnty['quantity'];
             if ($q < 10 || $q < $quantity){
-                echo "Осталось всего $q материалов этого вида";
+                $message = "Осталось всего $q материалов этого вида";
+                echo $message;
             }
-            else echo "OK";
+            //else echo "OK";
          }
     }
 
