@@ -56,11 +56,18 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="ordername" name="ord-name"  placeholder="e.g. Т-1-16" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-push-3">
+                            <div class="alert alert-success alert-dismissible fade in" role="alert" id ="name-alert">
+                                <button  type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <div id="name-info"></div>
+                            </div>
+                        </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Enter date <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12" >
                           <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" name="ord-date" required="required" type="text">
                         </div>
                       </div>
@@ -102,6 +109,13 @@
                           </td>
                           <td>
                             <input type="number" name="pos-quantity[]"  placeholder="numbers only" required="required" class="input-qnty form-control col-md-7 col-xs-12">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-success alert-dismissible fade in" role="alert" id="qnty-alert">
+                                <button  type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <div id="qnty-info"></div>
+                            </div>
+                        </div>
                           </td>
                           <td>
                             <input type="text" name="pos-sum[]"  placeholder="=Qnty*price" required="required" class="input-sum form-control col-md-7 col-xs-12" readonly="true">

@@ -3,21 +3,23 @@ $('#ordername').change(function (e) {
     //console.log($order);
     $.post('api.php', { 'ordname': $order }).then(function (data) {
         //console.log(data);
-        alert(data);
+        $('#name-info').text(data);
+        $('#name-alert').fadeIn(300);
     });
 });
 
 
 //materials check supposed to return alert if materials.quantity in db is less than the input quantity or less than 10;
-mCheck = function(el){
+mCheck = function (el) {
     $row = $(el).parents('tr'); //wrapping el in $() makes it a jQuery object which is required to use jQuery magic like .parents() or .val()
     $name = $row.find('option:selected').text();
     $type = $row.find('option:selected').data('type');
     $qnty = $(el).val();
-    if($type == "materials"){
-        $.post('api.php',{'pos-name1':$name, 'pos-quant':$qnty}).then(function(data){
-        alert(data);
-    });
+    if ($type == "materials") {
+        $.post('api.php', { 'pos-name1': $name, 'pos-quant': $qnty }).then(function (data) {
+            $('#qnty-info').text(data);
+            $('#qnty-alert').fadeIn(300);
+        });
     }
 };
 
@@ -78,7 +80,7 @@ handleStuff = function () {
 
     $('.remove').click(function (event) {
         rmRow(event.target);
-    })
+    });
 }
 
 handleStuff();
