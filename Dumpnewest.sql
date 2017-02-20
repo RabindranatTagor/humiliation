@@ -107,13 +107,14 @@ DROP TABLE IF EXISTS `zakaz`;
 CREATE TABLE `zakaz` (
   `idzakaz` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `date` date NOT NULL,
+  `date` varchar(45) NOT NULL,
   `customer` int(11) NOT NULL,
   `sum` float NOT NULL COMMENT '//zdes dolzhen byt'' SUM poziciy is "sostav_zakaza", sovpadauischikh po id_zakaza',
   PRIMARY KEY (`idzakaz`),
   UNIQUE KEY `zakaz_name_UNIQUE` (`name`),
-  KEY `FK_customer_idx` (`customer`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  KEY `FK_customer_idx` (`customer`),
+  CONSTRAINT `customer_id` FOREIGN KEY (`customer`) REFERENCES `customers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +123,7 @@ CREATE TABLE `zakaz` (
 
 LOCK TABLES `zakaz` WRITE;
 /*!40000 ALTER TABLE `zakaz` DISABLE KEYS */;
-INSERT INTO `zakaz` VALUES (1,'Т-1-16','2002-02-20',1,45000),(2,'Т-2-16','2003-03-20',1,105600),(3,'Т-3-16','2003-03-20',2,0);
+INSERT INTO `zakaz` VALUES (1,'Т-1-16','2002-02-20',1,45000),(2,'Т-2-16','2003-03-20',1,105600),(3,'Т-3-16','2003-03-20',2,0),(4,'Т-4-16','01/31/2017',4,0);
 /*!40000 ALTER TABLE `zakaz` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,4 +167,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-11 14:04:58
+-- Dump completed on 2017-02-20 19:37:57
