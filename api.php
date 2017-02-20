@@ -17,7 +17,7 @@
             mysqli_close($link);      
          }                
     }
-    /*
+    
     //check qnty
     if ( isset($_REQUEST['pos-name1'])) {
        $pname = $_REQUEST['pos-name1'];
@@ -36,7 +36,7 @@
             }        
          }                
     }
-    */
+
    //return price
    if ( isset($_REQUEST['pos-name'])) {
        $pname = $_REQUEST['pos-name'];
