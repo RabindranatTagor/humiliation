@@ -39,13 +39,10 @@ qtHandle = function (el) { //el = short of element
     $curr = parseInt($quant * $price); //parse a number from a string
     $row.find('.input-sum').val($curr);
 
-    //this one doesn't return a numercial value $curr = $row.find('.input-sum').val($quant * $price);
     $tot = 0;
     $('.input-sum').each(function () {
-        $tot += parseInt($(this).val());
+        $tot += $(this).val()*1;
     });
-    //$tot = parseInt($('#sumtotal').val());
-    //$res = $curr + $tot;
     $('#sumtotal').val($tot);
 
     if ($row.is(':last-child')) { //I ♥ jQuery, it's like plain english
