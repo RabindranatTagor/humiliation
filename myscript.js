@@ -19,7 +19,7 @@ mCheck = function (el) {
     $type = $row.find('option:selected').data('type');
     $qnty = $(el).val();
     if ($type == "materials") {
-        $.post('api.php', { 'pos-name1': $name, 'pos-quant': $qnty }).then(function (data) {
+        $.post('api.php', { 'pos-name2': $name, 'pos-quant': $qnty }).then(function (data) {
             if(data){
                 $('#qnty-info').text(data);
                 $('#qnty-alert').fadeIn(300);
@@ -45,7 +45,7 @@ posHandle = function (el) {
         $(el).parents('tr').find('.input-price').val(data);
     });
 
-    $row = $this.parents('tr');
+    $row = $(el).parents('tr');
 
 };
 

@@ -109,13 +109,13 @@
                           </td>
                           <td>
                             <input type="number" name="pos-quantity[]"  placeholder="numbers only" required="required" class="input-qnty form-control col-md-7 col-xs-12">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="alert alert-success alert-dismissible fade in" role="alert" id="qnty-alert">
-                                <button  type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                                </button>
-                                <div id="qnty-info"></div>
-                            </div>
-                        </div>
+
+                              <div class="alert alert-success alert-dismissible fade in" role="alert" id="qnty-alert">
+                                  <button  type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                  </button>
+                                  <div id="qnty-info"></div>
+                              </div>
+
                           </td>
                           <td>
                             <input type="text" name="pos-sum[]"  placeholder="=Qnty*price" required="required" class="input-sum form-control col-md-7 col-xs-12" readonly="true">

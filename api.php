@@ -20,8 +20,8 @@
     }
 
     //check qnty
-    if ( isset($_REQUEST['pos-name1'])) {       
-       $pname = $_REQUEST['pos-name1'];
+    if ( isset($_REQUEST['pos-name2'])) {
+       $pname = $_REQUEST['pos-name2'];
        $quantity = $_REQUEST['pos-quant'];
        $query = "SELECT quantity FROM materials WHERE name = '$pname'";
 
