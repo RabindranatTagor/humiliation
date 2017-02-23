@@ -89,3 +89,16 @@ handleStuff = function () {
 }
 
 handleStuff();
+
+
+//show div in newtovar
+$('#ttype').change(function (e) {
+    $type = $(this).val();
+    console.log($type);
+    if ($type == "materials") {
+        $('#for-mats').fadeIn(300);
+    }
+    else if ($type == "road_signs_catalog") {
+        $('#for-rsc').fadeIn(300);
+    }
+});

@@ -105,10 +105,10 @@
                             <a href="newtovar.php"><button type="button" class="btn btn-success btn-sm">Add new</button></a> <!--add new (later!)-->
                           </td>
                           <td>
-                            <input type="text" name="pos-price[]" placeholder="here goes price" required="required" class="input-price form-control col-md-7 col-xs-12" readonly="true">
+                            <input type="text" name="pos-price[]" required="required" class="input-price form-control col-md-7 col-xs-12" readonly="true">
                           </td>
                           <td>
-                            <input type="number" name="pos-quantity[]"  placeholder="numbers only" required="required" class="input-qnty form-control col-md-7 col-xs-12">
+                            <input type="number" name="pos-quantity[]" required="required" class="input-qnty form-control col-md-7 col-xs-12">
 
                               <div class="alert alert-success alert-dismissible fade in" role="alert" id="qnty-alert">
                                   <button  type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
@@ -118,7 +118,7 @@
 
                           </td>
                           <td>
-                            <input type="text" name="pos-sum[]"  placeholder="=Qnty*price" required="required" class="input-sum form-control col-md-7 col-xs-12" readonly="true">
+                            <input type="text" name="pos-sum[]" required="required" class="input-sum form-control col-md-7 col-xs-12" readonly="true">
                           </td>
                           <td><button class="remove" type ="button">&times;</button></td>
                         </tr>
