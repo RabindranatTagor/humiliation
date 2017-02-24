@@ -92,9 +92,9 @@ handleStuff();
 
 
 //show div in newtovar
-$('#ttype').change(function (e) {
+$('.goods').change(function (e) {
     $type = $(this).val();
-    console.log($type);
+    console.log($type); 
     if ($type == "materials") {
         $('#for-mats').fadeIn(300);
     }
