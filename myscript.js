@@ -92,13 +92,13 @@ handleStuff();
 
 
 //show div in newtovar
-$('.goods').change(function (e) {
-    $type = $(this).val();
-    console.log($type); 
-    if ($type == "materials") {
-        $('#for-mats').fadeIn(300);
-    }
-    else if ($type == "road_signs_catalog") {
-        $('#for-rsc').fadeIn(300);
-    }
+$('input.goods').on('ifChecked', function(event){ //event provided by iCheck plugin used in the template
+  $type = $(this).val();
+  console.log($type);
+  if ($type == "materials") {
+      $('#for-mats').fadeIn(300);
+  }
+  else if ($type == "road_signs_catalog") {
+      $('#for-rsc').fadeIn(300);
+  }
 });
