@@ -23,8 +23,8 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <p>
                                     Road Signs:
-                                    <input type="radio" class="goods flat" name="type" id="ttype1" value="road_signs_catalog" required /> Other:
-                                    <input type="radio" class="goods flat" name="type" id="ttype2" value="materials" />
+                                    <input type="radio" class="goods flat" name="type" value="road_signs_catalog" required /> Other:
+                                    <input type="radio" class="goods flat" name="type" value="materials" />
                                 </p>
                             </div>
                           </div>
