@@ -102,7 +102,8 @@
                                 <option value=<?php echo $mat[0]?> data-type="materials"><?php echo $mat[1] ?></option>
                               <?php }?>
                             </select>
-                            <a href="newtovar.php"><button type="button" class="btn btn-success btn-sm">Add new</button></a> <!--add new (later!)-->
+                            <a href="newtovar.php"><button type="button" class="btn btn-success btn-sm">Add new</button></a>
+                            <input type="hidden" name="pos-type[]" id="from-table">
                           </td>
                           <td>
                             <input type="text" name="pos-price[]" required="required" class="input-price form-control col-md-7 col-xs-12" readonly="true">

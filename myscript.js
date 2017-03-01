@@ -1,3 +1,4 @@
+//check uniqueness
 $('#ordername').change(function (e) {
     $order = $(this).val();
     //console.log($order);
@@ -43,6 +44,7 @@ posHandle = function (el) {
     $type = $(el).find('option:selected').data('type');
     $.post('api.php', { 'pos-name': $name, 'type': $type }).then(function (data) {
         $(el).parents('tr').find('.input-price').val(data);
+        $(el).parents('tr').find('#from-table').val($type);
     });
 
     $row = $(el).parents('tr');
