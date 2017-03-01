@@ -96,9 +96,11 @@ $('input.goods').on('ifChecked', function(event){ //event provided by iCheck plu
   $type = $(this).val();
   console.log($type);
   if ($type == "materials") {
+      $('#for-rsc').hide();
       $('#for-mats').fadeIn(300);
   }
   else if ($type == "road_signs_catalog") {
+      $('#for-mats').hide();
       $('#for-rsc').fadeIn(300);
   }
 });

@@ -8,7 +8,7 @@
     $query = "INSERT INTO customers (name, INN, KPP) VALUES ('$name', '$inn', '$kpp')";
     $result = mysqli_query($link, $query);
 
-    $redirect = isset($_SERVER['HTTP_REFERER'])? 'neworder1.php':'neworder1.php'; 
+    $redirect = isset($_SERVER['HTTP_REFERER'])? 'neworder.php':'neworder.php'; 
     header("Location: $redirect"); 
     exit();
 ?>
