@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt serif;
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+#invoice {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 1cm 1.5cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+
+h4.inv-txt {
+    font-size: 11pt;
+    margin: 0;
+}
+
+hr.black-line {
+    margin: 0;
+}
+
+td {
+    border: 1px solid black;
+    border-collapse: separate;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
