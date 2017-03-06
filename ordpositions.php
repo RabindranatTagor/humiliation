@@ -21,8 +21,12 @@
 
 
     $query = "SELECT * FROM zakaz WHERE name = '$oname'";
-    $info = mysqli_fetch_assoc($result);
-    if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
+    if ($result = mysqli_query($link, $query)) {
+        $info = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        echo $info['idzakaz'];
+        echo $info ['name'];
+    }
     else echo '<br>:26 MySQLi error: '.mysqli_error($link);
 
     //order_positions info
@@ -31,6 +35,7 @@
     $ptype = $_POST['pos-type'];
     $pqnty = $_POST['pos-quantity'];
 
+    //echoes
     for ($i = 0; $i <count($pname); $i++){
         if ($ptype[$i] == "materials"){
             $query = "INSERT INTO zakaz_contents (idzakaza, id_road_signs, id_materials, quantity) VALUES('$zid', NULL, '$pname[$i]', $pqnty[$i])";
@@ -45,15 +50,12 @@
         }
     }
 
-
 //    $redirect = isset($_SERVER['HTTP_REFERER'])? 'neworder.php':'neworder.php';
 //    header("Location: $redirect");
 //    exit();
 
 ?>
 
-ADD NEW BUTTON HERE -> goes to a new form, returns after to this page
-SUMBIT BUTTON HERE ->goes to a pdf
 
 <?php
 include $root.'/footer.php';

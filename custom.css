@@ -16,3 +16,15 @@ div.alert {
 div.div-hid {
     display: none;
 }
+
+div.hat{
+    border: 1px solid black; 
+}
+
+hr.black-line{
+    color: black;
+}
+
+p.inv-txt{
+    font: 11pt Times New Roman;
+}
