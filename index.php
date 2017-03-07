@@ -5,7 +5,7 @@
     $query = "SELECT zakaz.idzakaz, zakaz.name, zakaz.date, customers.name, zakaz.sum FROM zakaz, customers where customers.id=zakaz.customer";
     $result = mysqli_query($link, $query);
 
-    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) { 
+    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
          $rows[] = $row;
          }
     mysqli_free_result($result);
@@ -35,7 +35,7 @@
                           <td><?php echo $row[2]?></td>
                           <td><?php echo $row[3]?></td>
                           <td><?php echo $row[4]?></td>
-                          <td><a href="/invoice/?id=<?php echo $row[0]?>"><button type="button" class="btn btn-primary btn-xs">Create invoice</button></a></td>
+                          <td><a href="/invoice.php/?id=<?php echo $row[0]?>"><button type="button" class="btn btn-primary btn-xs">Create invoice</button></a></td>
                         </tr>
                          <?php }?>
                       </tbody>
@@ -114,7 +114,7 @@
 
           </div>
           <br />
-				 
+
 				  </div>
                 </div>
               </div>
@@ -125,4 +125,3 @@
 <?php
 include $root.'\footer.php';
 ?>
-

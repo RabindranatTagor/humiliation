@@ -28,3 +28,9 @@ hr.black-line{
 p.inv-txt{
     font: 11pt Times New Roman;
 }
+
+iframe#invoiceframe {
+    width: 100%;
+    max-width: 900px;
+    height: 1000px;
+}
