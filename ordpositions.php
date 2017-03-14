@@ -24,7 +24,7 @@
     if ($result = mysqli_query($link, $query)) {
         $info = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
-        echo $info['idzakaz'];
+        echo $info['idzakaz']'<br>';
         echo $info ['name'];
     }
     else echo '<br>:26 MySQLi error: '.mysqli_error($link);
@@ -42,17 +42,34 @@
             echo '<br>'.$query.'<br>';
             if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
             else echo '<br> MySQLi error: '.mysqli_error($link);
+            $query = "UPDATE materials SET quantity = quantity - '$pqnty[$i]' WHERE idmaterials = '$pname[$i]'";
+            echo '<br>'.$query.'<br>';
+            if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
+            else echo '<br> MySQLi error: '.mysqli_error($link);
         }
         elseif($ptype[$i] == "road_signs_catalog"){
             $query = "INSERT INTO zakaz_contents (idzakaza, id_road_signs, id_materials, quantity) VALUES('$zid', '$pname[$i]', NULL, $pqnty[$i])";
             if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
             else echo '<br>:41 MySQLi error: '.mysqli_error($link);
+            $query = "SELECT masks FROM road_signs_catalog WHERE idroad_signs_catalog = '$pname[$i]'";
+            if ($result = mysqli_query($link, $query)) {
+                $m = mysqli_fetch_assoc($result);
+                $mask = $m['masks'];
+                mysqli_free_result($result);
+                if(!is_null($mask)){
+                    $query = "UPDATE materials SET quantity = quantity - '$pqnty[$i]' WHERE idmaterials = '$mask'";
+                    echo '<br>'.$query.'<br>';
+                    if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
+                    else echo '<br> MySQLi error: '.mysqli_error($link);
+                }
+            }
+            else echo '<br>:41 MySQLi error: '.mysqli_error($link);
         }
     }
 
-//    $redirect = isset($_SERVER['HTTP_REFERER'])? 'neworder.php':'neworder.php';
-//    header("Location: $redirect");
-//    exit();
+    $redirect = isset($_SERVER['HTTP_REFERER'])? "/invoice.php/?id=$zid":"/invoice.php/?id=$zid";
+    header("Location: $redirect");
+    exit();
 
 ?>
 

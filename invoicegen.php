@@ -18,16 +18,30 @@
       $cust = mysqli_fetch_assoc($result);
       mysqli_free_result($result);
     } else echo '<br>MySQLi error: '.mysqli_error($link);
-
+    
+    //positions query
+    $query = "SELECT zakaz_contents.quantity, materials.name, materials.price FROM zakaz_contents, materials WHERE zakaz_contents.id_materials = materials.idmaterials AND zakaz_contents.idzakaza='$id'
+              UNION ALL
+              SELECT zakaz_contents.quantity, road_signs_catalog.name, road_signs_catalog.price FROM zakaz_contents, road_signs_catalog WHERE zakaz_contents.id_road_signs = road_signs_catalog.idroad_signs_catalog AND zakaz_contents.idzakaza='$id'";
+    if ($result = mysqli_query($link, $query)) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+             $rows[] = $row;
+             }
+    } else echo '<br>MySQLi error: '.mysqli_error($link);
 
     $ORDER_NAME     = $order['name'];
     $ORDER_DATE     = $order['date'];
+    $ORDER_SUM      = $order['sum']
     $CUSTOMER_NAME  = $cust['name'];
     $INN            = $cust['INN'];
     $KPP            = $cust['KPP'];
+    $COUNTER        = 0;
+
+    
+
 
 ?>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/invoice.css" />
 
 <article id="invoice">
@@ -109,12 +123,13 @@
                 </tr>
             </thead>
             <tbody>
+                <?php foreach($rows as $row){?>
                 <tr>
-                    <td><?php echo $COUNTER ?></td>
-                    <td><?php echo $OP_NAME ?></td>
-                    <td><?php echo $OP_QNTY ?></td>
-                    <td><?php echo $OP_PRICE ?></td>
-                    <td><?php echo $OP_QNTY*$OP_PRICE ?></td>
+                    <td><?php echo $COUNTER+1 ?></td>
+                    <td><?php echo $row[1] ?></td>
+                    <td><?php echo $row[0] ?></td>
+                    <td><?php echo $row[2] ?></td>
+                    <td><?php echo $row[2]*$row[0]?></td>
                 </tr>
                 <tr>
                     <td><strong>ИТОГО:</strong></td>
@@ -126,11 +141,7 @@
                 </tr>
             </tbody>
         </table>
-        <div class="add-info">
-            <p class="inv-txt">К оплате: <?php echo $ORDER_SUM ?> прописью</p>
-            <hr class="black-line">
-            <p class="inv-txt">Примечание</p>
-        </div>
+
 
         <p class="inv-txt">Руководитель  предприятия                                                            А. В. Палкин<br>
 
