@@ -125,7 +125,7 @@
             <tbody>
                 <?php foreach($rows as $row){?>
                 <tr>
-                    <td><?php echo $COUNTER+1 ?></td>
+                    <td><?php echo $COUNTER++ ?></td>
                     <td><?php echo $row[1] ?></td>
                     <td><?php echo $row[0] ?></td>
                     <td><?php echo $row[2] ?></td>
