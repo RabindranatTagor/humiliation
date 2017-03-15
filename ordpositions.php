@@ -16,15 +16,14 @@
     //order input
     $query = "INSERT INTO zakaz (name, date, customer, sum) VALUES ('$oname', STR_TO_DATE('$odate', '%m/%d/%Y'), '$customer', '$sum')"; //ебучая закрывающая скобка я проебал пол часа или час
 
-    if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
-    else echo '<br>MySQLi error: '.mysqli_error($link);
+    if (mysqli_query($link, $query) == false) echo '<br>MySQLi error: '.mysqli_error($link); //$result is boolean: nothing to free
 
 
     $query = "SELECT * FROM zakaz WHERE name = '$oname'";
     if ($result = mysqli_query($link, $query)) {
         $info = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
-        echo $info['idzakaz']'<br>';
+        echo $info['idzakaz'].'<br>';
         echo $info ['name'];
     }
     else echo '<br>:26 MySQLi error: '.mysqli_error($link);
@@ -39,13 +38,13 @@
     for ($i = 0; $i <count($pname); $i++){
         if ($ptype[$i] == "materials"){
             $query = "INSERT INTO zakaz_contents (idzakaza, id_road_signs, id_materials, quantity) VALUES('$zid', NULL, '$pname[$i]', $pqnty[$i])";
-            echo '<br>'.$query.'<br>';
-            if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
-            else echo '<br> MySQLi error: '.mysqli_error($link);
+            // echo '<br>'.$query.'<br>';
+            if (mysqli_query($link, $query) == false) echo '<br>MySQLi error: '.mysqli_error($link);
+
             $query = "UPDATE materials SET quantity = quantity - '$pqnty[$i]' WHERE idmaterials = '$pname[$i]'";
-            echo '<br>'.$query.'<br>';
-            if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
-            else echo '<br> MySQLi error: '.mysqli_error($link);
+            // echo '<br>'.$query.'<br>';
+            if (mysqli_query($link, $query) == false) echo '<br>MySQLi error: '.mysqli_error($link);
+
         }
         elseif($ptype[$i] == "road_signs_catalog"){
             $query = "INSERT INTO zakaz_contents (idzakaza, id_road_signs, id_materials, quantity) VALUES('$zid', '$pname[$i]', NULL, $pqnty[$i])";

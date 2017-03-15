@@ -106,3 +106,8 @@ $('input.goods').on('ifChecked', function(event){ //event provided by iCheck plu
       $('#for-rsc').fadeIn(300);
   }
 });
+
+//print iframe contents
+//ADD A BUTTON AND HANDLE CLICK WITH THIS
+var iframe = $('#invoiceframe')[0];
+iframe.contentWindow.print();
