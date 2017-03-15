@@ -18,7 +18,7 @@
       $cust = mysqli_fetch_assoc($result);
       mysqli_free_result($result);
     } else echo '<br>MySQLi error: '.mysqli_error($link);
-    
+
     //positions query
     $query = "SELECT zakaz_contents.quantity, materials.name, materials.price FROM zakaz_contents, materials WHERE zakaz_contents.id_materials = materials.idmaterials AND zakaz_contents.idzakaza='$id'
               UNION ALL
@@ -31,13 +31,13 @@
 
     $ORDER_NAME     = $order['name'];
     $ORDER_DATE     = $order['date'];
-    $ORDER_SUM      = $order['sum']
+    $ORDER_SUM      = $order['sum'];
     $CUSTOMER_NAME  = $cust['name'];
     $INN            = $cust['INN'];
     $KPP            = $cust['KPP'];
     $COUNTER        = 0;
 
-    
+
 
 
 ?>
@@ -131,6 +131,7 @@
                     <td><?php echo $row[2] ?></td>
                     <td><?php echo $row[2]*$row[0]?></td>
                 </tr>
+                <?php } ?>
                 <tr>
                     <td><strong>ИТОГО:</strong></td>
                     <td><?php echo $ORDER_SUM ?></td>
