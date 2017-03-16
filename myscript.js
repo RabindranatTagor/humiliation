@@ -109,5 +109,5 @@ $('input.goods').on('ifChecked', function(event){ //event provided by iCheck plu
 
 //print iframe contents
 //ADD A BUTTON AND HANDLE CLICK WITH THIS
-var iframe = $('#invoiceframe')[0];
-iframe.contentWindow.print();
+// var iframe = $('#invoiceframe')[0];
+// iframe.contentWindow.print();
