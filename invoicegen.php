@@ -28,14 +28,15 @@
              $rows[] = $row;
              }
     } else echo '<br>MySQLi error: '.mysqli_error($link);
+    $mydate = strtotime($order['date']);
 
     $ORDER_NAME     = $order['name'];
-    $ORDER_DATE     = $order['date'];
+    $ORDER_DATE     = date('"d" F Y \г.', $mydate);
     $ORDER_SUM      = $order['sum'];
     $CUSTOMER_NAME  = $cust['name'];
     $INN            = $cust['INN'];
     $KPP            = $cust['KPP'];
-    $COUNTER        = 0;
+    $COUNTER        = 1;
 
 
 
