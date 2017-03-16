@@ -1,7 +1,6 @@
 <?php
     require 'init.php';
 
-
     $id = $_REQUEST['id'];
     //order query
     $query = "SELECT * FROM zakaz WHERE idzakaz = $id";
@@ -30,15 +29,17 @@
     } else echo '<br>MySQLi error: '.mysqli_error($link);
 
     $ORDER_NAME     = $order['name'];
-    $ORDER_DATE     = $order['date'];
     $ORDER_SUM      = $order['sum'];
     $CUSTOMER_NAME  = $cust['name'];
     $INN            = $cust['INN'];
     $KPP            = $cust['KPP'];
     $COUNTER        = 0;
 
-
-
+    // setlocale(LC_ALL, 'ru-RU');
+    $mydate = strtotime($order['date']);
+    $fdate = date('Y-m-d', $mydate);
+    include_once('TimeHelper.php');
+    $RUDATE = TimeHelper::create($fdate, 'Y-m-d')->longDate(true, false);
 
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -97,7 +98,7 @@
 
 
 
-        <p class = "inv-txt"><strong>СЧЕТ №<?php echo $ORDER_NAME ?><br> от <?php echo $ORDER_DATE?></strong></p>
+        <p class = "inv-txt"><strong>СЧЕТ №<?php echo $ORDER_NAME ?><br> от <?php echo $RUDATE?></strong></p>
         <p class = "inv-txt"><strong>Поставщик:</strong> ООО "Росдорзнак" 625000, г.Тюмень, ул. Герцена, 72, оф. 409</p>
         <hr class="black-line">
         <p class = "inv-txt"><strong>Покупатель:</strong> <?php echo $CUSTOMER_NAME ?> ИНН/КПП <?php echo $INN.'/'.$KPP ?></p>
