@@ -56,3 +56,8 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
+
+td.unseen{
+    border-bottom: 1 px solid white;
+    border-left: 1 px solid white;
+}

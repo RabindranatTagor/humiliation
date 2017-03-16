@@ -1,7 +1,5 @@
 <?php
-
 // namespace korytoff\helpers;
-
 /**
  * Class TimeHelper
  * @author korytoff@gmail.com
@@ -9,7 +7,6 @@
  */
 class TimeHelper
 {
-
     /**
      * @var \DateTime
      */
@@ -47,18 +44,18 @@ class TimeHelper
      * @var array
      */
     protected $monthPlural = array(
-        "Января",
-        "Февраля",
-        "Марта",
-        "Апреля",
-        "Мая",
-        "Июня",
-        "Июля",
-        "Августа",
-        "Сентября",
-        "Октября",
-        "Ноября",
-        "Декабря"
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря"
     );
     /**
      * @var array
@@ -101,13 +98,11 @@ class TimeHelper
         'Сб',
         'Вс',
     );
-
     const DATETIME = 'Y-m-d H:i:s';
     const DATE = 'Y-m-d';
     const EUR_DATETIME = 'd.m.Y H:i:s';
     const EUR_DATE = 'd.m.Y';
     const STRDATE = 'd month year time';
-
     /**
      * Создание TimeHelper с указанием даты и формата
      *
@@ -118,10 +113,8 @@ class TimeHelper
     static function create($date = null, $format = self::DATETIME)
     {
         $className = __CLASS__;
-
         return new $className($date, $format);
     }
-
     /**
      * Магическая функция toString
      *
@@ -131,7 +124,6 @@ class TimeHelper
     {
         return $this->datetime();
     }
-
     /**
      * Клонирование
      */
@@ -139,7 +131,6 @@ class TimeHelper
     {
         $this->_dateTime = clone $this->_dateTime;
     }
-
     /**
      * @param null $date
      * @param string $format
@@ -156,10 +147,8 @@ class TimeHelper
         } else {
             $this->_dateTime = new \DateTime;
         }
-
         return $this;
     }
-
     /**
      * Разбор даты из строки вида '2  Мая 2014 в 12:05'
      *
@@ -187,10 +176,8 @@ class TimeHelper
         $result['year'] = (isset($matches[3]) && strlen($matches[3]) === 4) ? $matches[3] : date('Y');
         $result['time'] = isset($matches[4]) ? str_pad($matches[4], 8, ':00') : "00:00:00";
         $dateStr = $result['year'] . '-' . $result['month'] . '-' . $result['day'] . ' ' . $result['time'];
-
         return $result ? \DateTime::createFromFormat(self::DATETIME, $dateStr) : new \DateTime;
     }
-
     /**
      * Прибавление дней
      *
@@ -200,10 +187,8 @@ class TimeHelper
     public function plusDay($day = 1)
     {
         $this->_dateTime->modify("+$day day");
-
         return $this;
     }
-
     /**
      * Изменение даты
      *
@@ -215,10 +200,8 @@ class TimeHelper
     {
         $day = (int) $day;
         $this->_dateTime->modify("$day $param");
-
         return $this;
     }
-
     /**
      * Вывод даты и времени с указанием формата
      *
@@ -243,10 +226,8 @@ class TimeHelper
                 $result .= ' ' . $this->_dateTime->format('H:i:s');
             }
         }
-
         return $result;
     }
-
     /**
      * Получение номера дня
      *
@@ -256,10 +237,8 @@ class TimeHelper
     {
         $result = '';
         $result .= (int) $this->_dateTime->format('j');
-
         return $result;
     }
-
     /**
      * Получения номера дня недели
      *
@@ -269,7 +248,6 @@ class TimeHelper
     {
         return (int) $this->_dateTime->format('N');
     }
-
     /**
      * Получение дня недели текстом
      *
@@ -282,7 +260,6 @@ class TimeHelper
         $days = ($short) ? $this->shortDay : $this->day;
         return isset($days[$N]) ? $days[$N] : "";
     }
-
     /**
      * Получение недели
      *
@@ -298,10 +275,8 @@ class TimeHelper
         } else {
             $result .= ' ' . mb_convert_case($this->month[$M], MB_CASE_TITLE);
         }
-
         return $result;
     }
-
     /**
      * Разница с текущей датой и временем
      *
@@ -312,10 +287,8 @@ class TimeHelper
     {
         $now = new \DateTime();
         $date = clone $this->_dateTime;
-
         return $now->diff($date)->format($format);
     }
-
     /**
      * Получение словестного отображения даты
      * Например "Сегодня", "Вчера", "Завтра", "14 сентября 2015 г."
@@ -341,10 +314,8 @@ class TimeHelper
         if ($time) {
             $result .= ' ' . $this->shortTime(false);
         }
-
         return $result;
     }
-
     /**
      * Получения длинного отображения даты текстом
      * Число, месяц, опц. год, опц. время
@@ -364,10 +335,8 @@ class TimeHelper
         if ($time) {
             $result .= ' ' . $this->shortTime(false);
         }
-
         return $result;
     }
-
     /**
      * Получения котортого отображения даты
      * Опц. день недели, число, 3 буквы месяца
@@ -387,10 +356,8 @@ class TimeHelper
         $result .= $this->_dateTime->format('j') * 1;
         $M = $this->_dateTime->format('n') * 1 - 1;
         $result .= ' ' . mb_strtolower($this->shortMonth[$M]);
-
         return $result;
     }
-
     /**
      * Получение короткой записи времени
      * Опц. день недели, время
@@ -409,10 +376,8 @@ class TimeHelper
             }
         }
         $result .= $this->_dateTime->format('H:i');
-
         return $result;
     }
-
     /**
      * Получение года или интервала годов
      *
@@ -426,10 +391,8 @@ class TimeHelper
             $result = $start . ' – ';
         }
         $result .= $this->_dateTime->format('Y');
-
         return $result;
     }
-
     /**
      * Получения дней недели в массиве
      *
@@ -437,7 +400,7 @@ class TimeHelper
      */
     public function getWeek()
     {
-        $result = [];
+        $result = array();
         if ($this->_dateTime) {
             $this->_dateTime->setTime(0, 0, 0);
             $result['currentDate'] = $this->datetime(false);
@@ -457,8 +420,6 @@ class TimeHelper
             $result['nextDate'] = $dateClone->datetime(false);
             $result['next'] .= ' – ' . (string) $dateClone->modify(6)->longDate();
         }
-
         return $result;
     }
-
 }
