@@ -1,12 +1,6 @@
 <?php
     require 'init.php';
 
-    include $root.'/header.php';
-
-    echo '<br><br>';
-    print_r($_POST);
-    echo '<br><br>';
-
     //order info
     $customer = $_POST['cust-info'];
     $oname = $_POST['ord-name'];
@@ -23,8 +17,8 @@
     if ($result = mysqli_query($link, $query)) {
         $info = mysqli_fetch_assoc($result);
         mysqli_free_result($result);
-        echo $info['idzakaz'].'<br>';
-        echo $info ['name'];
+//        echo $info['idzakaz'].'<br>';
+//        echo $info ['name'];
     }
     else echo '<br>:26 MySQLi error: '.mysqli_error($link);
 
@@ -57,7 +51,7 @@
                 mysqli_free_result($result);
                 if(!is_null($mask)){
                     $query = "UPDATE materials SET quantity = quantity - '$pqnty[$i]' WHERE idmaterials = '$mask'";
-                    echo '<br>'.$query.'<br>';
+//                  echo '<br>'.$query.'<br>';
                     if ($result = mysqli_query($link, $query)) mysqli_free_result($result);
                     else echo '<br> MySQLi error: '.mysqli_error($link);
                 }
@@ -72,7 +66,3 @@
 
 ?>
 
-
-<?php
-include $root.'/footer.php';
-?>
