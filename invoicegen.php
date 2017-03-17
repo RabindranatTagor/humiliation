@@ -38,7 +38,7 @@
     $fdate = date('Y-m-d', $mydate);
 
     $RUDATE = TimeHelper::create($fdate, 'Y-m-d')->longDate(true, false);
-    
+
     ini_set('display_errors','Off');
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -144,13 +144,15 @@
             </tbody>
         </table>
 
-        
-        <pre>
-        Руководитель  предприятия                                                            А. В. Палкин
+
+        <div class="footer">
+          Руководитель  предприятия                                                            <span class="execname">А. В. Палкин</span>
+        </div>
+
+        <div class="footer">
+          Главный бухгалтер:                                                                   <span class="execname">А. В. Палкин</span>          
+        </div>
 
 
-        Главный бухгалтер:                                                                   А. В. Палкин
 
-        </pre>
-        
       </article>

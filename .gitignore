@@ -6,3 +6,4 @@ vendors/
 images/
 /Dumpnewest.sql
 info.php
+TimeHelper.php
