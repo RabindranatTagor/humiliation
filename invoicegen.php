@@ -144,15 +144,12 @@
             </tbody>
         </table>
 
-
         <div class="footer">
           Руководитель  предприятия                                                            <span class="execname">А. В. Палкин</span>
         </div>
 
         <div class="footer">
-          Главный бухгалтер:                                                                   <span class="execname">А. В. Палкин</span>          
+          Главный бухгалтер:                                                                   <span class="execname">А. В. Палкин</span>
         </div>
-
-
 
       </article>
