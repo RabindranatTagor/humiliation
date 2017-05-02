@@ -71,11 +71,11 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> DO UR JOB <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Работа с заказами <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/neworder.php">Register a new order</a></li>
-                      <li><a href="#">Renew materials</a></li>
-                      <li><a href="/index.php">Main page</a></li>
+                      <li><a href="/neworder.php">Внести новый заказ</a></li>
+                      <li><a href="/remnants.php">Обновить материалы</a></li>
+                      <li><a href="/index.php">Главная страница</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
