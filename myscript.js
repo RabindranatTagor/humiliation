@@ -112,5 +112,3 @@ $('#printgen').click(function(event){
     var iframe = $('#invoiceframe')[0];
     iframe.contentWindow.print();
 });
-
-//print pdf - jspdf or dompdf???

@@ -3,7 +3,7 @@
 
     include $root.'/header.php';
 
-    $query = "SELECT * FROM road_signs.materials WHERE name LIKE '% MASK'";
+    $query = "SELECT * FROM road_signs.materials WHERE name LIKE '%Маска'";
    
     $result = mysqli_query($link, $query);
 

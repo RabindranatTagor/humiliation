@@ -1,6 +1,7 @@
 <?php
     require 'init.php';
-
+        ini_set('display_errors','On');
+     error_reporting('E_ALL');
     include $root.'/header.php';
     $query = "SELECT zakaz.idzakaz, zakaz.name, zakaz.date, customers.name, zakaz.sum FROM zakaz, customers where customers.id=zakaz.customer";
     $result = mysqli_query($link, $query);
@@ -10,8 +11,13 @@
          }
     mysqli_free_result($result);
 
-    mysqli_close($link);
 
+    foreach($rows as $row){
+        $dates[] = substr($row[2], 0, 4);
+    }
+    $years = array_unique($dates);
+    mysqli_close($link);
+        ini_set('display_errors','Off');
 ?>
 
 
@@ -50,11 +56,6 @@
                   <div class="col-md-6">
                     <h3>Regression Statistics <small>Intended here</small></h3>
                   </div>
-                  <div class="col-md-6">
-                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                    </div>
                   </div>
                 </div>
 
@@ -66,46 +67,49 @@
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
                   <div class="x_title">
-                    <h2>Top Campaign Performance</h2>
+                    <h2>Сформировать отчет</h2>
                     <div class="clearfix"></div>
                   </div>
 
                   <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Facebook Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
+                    <form id="demo-form2" name="report-info" data-parsley-validate class="form-horizontal form-label-left" action="reportgen.php" method="post">
+                      <div class="form-group">
+                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Месяц:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                          <select class="form-control" name="rmonth">
+                            <option value="01">Январь</option>
+                            <option value="02">Февраль</option>
+                            <option value="03">Март</option>
+                            <option value="04">Апрель</option>
+                            <option value="05">Май</option>
+                            <option value="06">Июнь</option>
+                            <option value="07">Июль</option>
+                            <option value="08">Август</option>
+                            <option value="09">Сентябрь</option>
+                            <option value="10">Октябрь</option>
+                            <option value="11">Ноябрь</option>
+                            <option value="12">Декабрь</option>
+                          </select>
                         </div>
-                      </div>
                     </div>
-                    <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Год:</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                          <select class="form-control" name="ryear">
+                            <?php foreach($years as $year){?>
+                          <option value=<?php echo $year?>><?php echo $year?></option>
+                           <?php }?>
+                          </select>
                         </div>
-                      </div>
                     </div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-success">Далее</button>
+                       </div>
+                      </div>
+                    </form>
                   </div>
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Conventional Media</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Bill boards</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    
 
                 </div>
 
