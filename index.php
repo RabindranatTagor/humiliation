@@ -72,7 +72,7 @@
                   </div>
 
                   <div class="col-md-12 col-sm-12 col-xs-6">
-                    <form id="demo-form2" name="report-info" data-parsley-validate class="form-horizontal form-label-left" action="reportgen.php" method="post">
+                    <form id="demo-form2" name="report-info" data-parsley-validate class="form-horizontal form-label-left" action="report.php" method="post">
                       <div class="form-group">
                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Месяц:</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
@@ -109,7 +109,7 @@
                       </div>
                     </form>
                   </div>
-                    
+
 
                 </div>
 

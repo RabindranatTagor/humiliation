@@ -34,3 +34,9 @@ iframe#invoiceframe {
     max-width: 820px;
     height: 1200px;
 }
+
+#reportframe {
+    width: 100%;
+    max-width: 960px;
+    height: 700px;
+}
