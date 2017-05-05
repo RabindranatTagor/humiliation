@@ -1,23 +1,31 @@
 <?php
     ini_set('display_errors','On');
-     error_reporting('E_ALL');
+    error_reporting('E_ALL');
     require 'init.php';
     include_once $_SERVER['DOCUMENT_ROOT'].'/TimeHelper.php';
+
 
     $mon = $_REQUEST['rmonth'];
     $year = $_REQUEST['ryear'];
 
     //order query
     $query = "SELECT zakaz.*, customers.name FROM zakaz, customers WHERE YEAR(date)='$year' AND MONTH(date)='$mon' AND customers.id=zakaz.customer ORDER BY idzakaz";
+
+    $orders = []; //shold be a global var eg defined prior to while loop below
+
     if ($result = mysqli_query($link, $query)) {
+
     while ($order = mysqli_fetch_array($result, MYSQLI_NUM)) {
          $orders[] = $order;
          }
     mysqli_free_result($result);
     } else echo "Нет данных за указанный период";
-    
+
     $sumtotal=0;
     //contents query
+
+    $contents = []; //same here
+
     foreach($orders as $order){
         $sumtotal+=$order[4];
         $clients[]=$order[5];
