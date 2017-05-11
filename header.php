@@ -40,11 +40,22 @@
     <!-- Our Custom Style -->
     <link href="/custom.css" rel="stylesheet">
 
-    <script type="text/javascript" language="javascript">
-        var data1 = <?php echo json_encode($qcyear)?>;
-        var data2 = <?php echo json_encode($qlyear)?>;
-        var data3 = <?php echo json_encode($scyear)?>;
-        var data4 = <?php echo json_encode($slyear)?>
+    <!-- jQuery --> <!-- moving it here from the footer for $.each() to work -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+
+    <?php require('bars.php'); ?>
+
+    <script>
+        var $data1 = <?php echo json_encode($qcyear)?>;
+        var $arr1 = [];
+        $.each($data1,function(key,val){ //json won't do, turning data into array
+          $arr1.push([key,val]);
+        });
+        $data1 = $arr1;
+        console.log($data1);
+        var $data2 = <?php echo json_encode($qlyear)?>;
+        var $data3 = <?php echo json_encode($scyear)?>;
+        var $data4 = <?php echo json_encode($slyear)?>;
     </script>
   </head>
 

@@ -121,43 +121,43 @@ $('#printgen1').click(function(event){
 
 //bar chart Q
 var dataset1=[
-{label:"Текущий год", data: $data1, color: "#5482FF"},
-{label:"Прошлый год", data: $data2, color: "#54FFA6"},
+  {label:"Текущий год", data: $data1, color: "#5482FF"},
+  {label:"Прошлый год", data: $data2, color: "#54FFA6"},
 ];
 
 var ticks = [
     {01: "Янв"}, {02: "Фев"}, {03: "Мар"}, {04: "Апр"}, {05: "Май"}, {06: "Июн"}, {07: "Июл"}, {08: "Авг"}, {09: "Сен"}, {10: "Окт"}, {11: "Ноя"}, {12: "Дек"}
 ];
 
-xaxis: {           
-  ticks: ticks
-}
-
-series: {
+var options = {
+  series: {
     bars: {
-        show: true
+      show: true
     }
-}
-bars: {
+  },
+  bars: {
     align: "center",
     barWidth: 0.25
-}
-
-xaxis: {
+  },
+  xaxis: {
     axisLabel: "Месяцы",
     axisLabelUseCanvas: true,
     axisLabelFontSizePixels: 12,
     axisLabelFontFamily: 'Verdana, Arial',
-    axisLabelPadding: 10
-}
- 
-yaxis: {
+    axisLabelPadding: 10,
+    ticks: ticks
+  },
+  yaxis: {
     axisLabelUseCanvas: true,
     axisLabelFontSizePixels: 12,
     axisLabelFontFamily: 'Verdana, Arial',
     axisLabelPadding: 3
-}
+  }
+
+};
+
+
 
 $(document).ready(function () {
-    $.plot($("#canvas_dahs-01"), dataset1, options);    
+    $.plot($("#canvas_dahs-01"), dataset1, options);
 });
