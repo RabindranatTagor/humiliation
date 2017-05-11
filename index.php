@@ -16,6 +16,51 @@
         $dates[] = substr($row[2], 0, 4);
     }
     $years = array_unique($dates);
+
+    //bar charts data
+    $cyear = date("Y");
+    $lyear = date("Y", strtotime("-1 year"));
+
+
+    $query = "SELECT * FROM zakaz WHERE YEAR(date)='$cyear'"; //curr year data
+        if ($result = mysqli_query($link, $query)) {
+            while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+            $cbars[] = $row;
+            }
+            mysqli_free_result($result);        
+        } else echo '<br>MySQLi error: '.mysqli_error($link);
+
+    $query = "SELECT * FROM zakaz WHERE YEAR(date)='$lyear'"; //last year data
+        if ($result = mysqli_query($link, $query)) {
+            while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+            $lbars[] = $row;
+            }
+            mysqli_free_result($result);        
+        } else echo '<br>MySQLi error: '.mysqli_error($link);
+
+    //data group by qnty and by sum
+    $qcyear = array();
+    $scyear = array();
+    foreach($cbars as $item){
+        $month = date('m', strtotime($item[2]));
+        $qcyear[$month]++;
+        if(isset($scyear[$month])){
+            $scyear[$month] += $item[4];
+        } else $scyear[$month] = $item[4];
+    }
+
+    $qlyear = array();
+    $slyear = array();
+    foreach($lbars as $item){
+        $month = date('m', strtotime($item[2]));
+        $qlyear[$month]++;
+        if(isset($slyear[$month])){
+            $slyear[$month] += $item[4];
+        } else $slyear[$month] = $item[4];
+    }
+
+
+
     mysqli_close($link);
         ini_set('display_errors','Off');
 ?>
@@ -62,7 +107,7 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
                   <div style="width: 100%;">
-                    <div id="canvas_dahs" class="demo-placeholder" style="width: 100%; height:270px;"></div>
+                    <div id="canvas_dahs-01" class="demo-placeholder" style="width: 100%; height:270px;"></div>
                   </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 bg-white">

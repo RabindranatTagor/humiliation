@@ -17,7 +17,7 @@
 
                       <div class="row no-print">
                         <div class="col-xs-12">
-                          <button class="btn btn-default" id="printgen"><i class="fa fa-print"></i> Print</button>
+                          <button class="btn btn-default" id="printgen1"><i class="fa fa-print"></i> Print</button>
                         </div>
                       </div>
 <?php
