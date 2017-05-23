@@ -52,10 +52,25 @@
           $arr1.push([key,val]);
         });
         $data1 = $arr1;
-        console.log($data1);
+        //console.log($data1);
         var $data2 = <?php echo json_encode($qlyear)?>;
+        var $arr2 = [];
+        $.each($data2,function(key,val){ 
+          $arr2.push([key,val]);
+        });
+        $data2 = $arr2;
         var $data3 = <?php echo json_encode($scyear)?>;
+        var $arr3 = [];
+        $.each($data3,function(key,val){ //json won't do, turning data into array
+          $arr3.push([key,val]);
+        });
+        $data3 = $arr3;
         var $data4 = <?php echo json_encode($slyear)?>;
+        var $arr4 = [];
+        $.each($data4,function(key,val){ //json won't do, turning data into array
+          $arr4.push([key,val]);
+        });
+        $data4 = $arr4;
     </script>
   </head>
 

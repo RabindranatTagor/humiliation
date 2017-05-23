@@ -126,7 +126,7 @@ var dataset1=[
 ];
 
 var ticks = [
-    {01: "Янв"}, {02: "Фев"}, {03: "Мар"}, {04: "Апр"}, {05: "Май"}, {06: "Июн"}, {07: "Июл"}, {08: "Авг"}, {09: "Сен"}, {10: "Окт"}, {11: "Ноя"}, {12: "Дек"}
+    [1, "Янв"], [2, "Фев"], [3, "Мар"], [4, "Апр"], [5, "Май"], [6, "Июн"], [7, "Июл"], [8, "Авг"], [9, "Сен"], [10, "Окт"], [11, "Ноя"], [12, "Дек"]
 ];
 
 var options = {
@@ -160,4 +160,14 @@ var options = {
 
 $(document).ready(function () {
     $.plot($("#canvas_dahs-01"), dataset1, options);
+});
+
+//bar chart S
+var dataset2=[
+  {label:"Текущий год", data: $data3, color: "#5482FF"},
+  {label:"Прошлый год", data: $data4, color: "#54FFA6"},
+];
+
+$(document).ready(function () {
+    $.plot($("#canvas_dahs-02"), dataset2, options);
 });

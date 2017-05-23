@@ -55,7 +55,7 @@
 
                 <div class="row x_title">
                   <div class="col-md-6">
-                    <h3>Regression Statistics <small>Intended here</small></h3>
+                    <h3>Количество заказов</h3>
                   </div>
                   </div>
                 </div>
@@ -112,6 +112,28 @@
                   </div>
 
 
+                </div>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="dashboard_graph">
+
+                <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>Суммарная стоимость</h3>
+                  </div>
+                  </div>
+                </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+                  <div style="width: 100%;">
+                    <div id="canvas_dahs-02" class="demo-placeholder" style="width: 100%; height:270px;"></div>
+                  </div>
                 </div>
 
                 <div class="clearfix"></div>

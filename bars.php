@@ -21,24 +21,22 @@ $query = "SELECT * FROM zakaz WHERE YEAR(date)='$lyear'"; //last year data
     } else echo '<br>MySQLi error: '.mysqli_error($link);
 
 //data group by qnty and by sum
-$qcyear = array();
-$scyear = array();
+$qcyear = array(1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0, 10=>0, 11=>0, 12=>0);
+$scyear = array(1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0, 10=>0, 11=>0, 12=>0);
 foreach($cbars as $item){
-    $month = date('m', strtotime($item[2]));
+    $month_s = date('m', strtotime($item[2]));
+    $month = intval($month_s, 10);
     $qcyear[$month]++;
-    if(isset($scyear[$month])){
-        $scyear[$month] += $item[4];
-    } else $scyear[$month] = $item[4];
+    $scyear[$month] += $item[4];
 }
 
-$qlyear = array();
-$slyear = array();
+$qlyear = array(1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0, 10=>0, 11=>0, 12=>0);
+$slyear = array(1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0, 10=>0, 11=>0, 12=>0);
 foreach($lbars as $item){
-    $month = date('m', strtotime($item[2]));
+    $month_s = date('m', strtotime($item[2]));
+    $month = intval($month_s, 10);
     $qlyear[$month]++;
-    if(isset($slyear[$month])){
-        $slyear[$month] += $item[4];
-    } else $slyear[$month] = $item[4];
+    $slyear[$month] += $item[4];
 }
 
 ?>
