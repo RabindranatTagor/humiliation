@@ -37,7 +37,7 @@
 
                     <form id="demo-form2" name="order-info" data-parsley-validate class="form-horizontal form-label-left" action="ordpositions.php" method="post">
                       <div class="form-group">
-                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Select customer:</label>
+                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Заказчик:</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select class="form-control" name="cust-info">
                             <option></option>
@@ -47,11 +47,11 @@
                           </select>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                          <a href="newcustomer.php"><button type="button" class="btn btn-success btn-sm">Add new</button></a>
+                          <a href="newcustomer.php"><button type="button" class="btn btn-success btn-sm">Новый</button></a>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Enter name: <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Номер счета: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="ordername" name="ord-name"  placeholder="e.g. Т-1-16" required="required" class="form-control col-md-7 col-xs-12">
@@ -65,14 +65,14 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Enter date <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Дата: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12" >
                           <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" name="ord-date" required="required" type="text">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Total sum: <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Итого: <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="sumtotal" name="sum-tot" required="required" class="form-control col-md-7 col-xs-12" readonly="true" value="0">
@@ -82,11 +82,11 @@
 					 <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>Price</th>
-                          <th>Quantity</th>
-                          <th>Sum</th>
-                          <th>Remove</th>
+                          <th>Наименование</th>
+                          <th>Цена</th>
+                          <th>Количество</th>
+                          <th>Стоимость</th>
+                          <th>Удалить</th>
                         </tr>
                       </thead>
 
@@ -125,7 +125,6 @@
                         </tr>
                       </tbody>
                     </table>
-
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

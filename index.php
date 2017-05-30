@@ -43,7 +43,7 @@
                           <td><?php echo $row[2]?></td>
                           <td><?php echo $row[3]?></td>
                           <td><?php echo $row[4]?></td>
-                          <td><a href="/invoice.php/?id=<?php echo $row[0]?>"><button type="button" class="btn btn-primary btn-xs">Create invoice</button></a></td>
+                          <td><a href="/invoice.php/?id=<?php echo $row[0]?>"><button type="button" class="btn btn-primary btn-xs">Сформировать счет</button></a></td>
                         </tr>
                          <?php }?>
                       </tbody>
